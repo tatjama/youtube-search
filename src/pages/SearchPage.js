@@ -2,52 +2,22 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from '../components/searchBar/SearchBar';
 import Video from '../components/video/Video';
 import { SearchPageStyles } from './SearchPageStyles';
+import { useHttp } from '../hooks/useHttp';
+import { urlApi, apiKey, resultsNumber } from '../utils/constants';
 
 const SearchPage = () => {
 	const [query, setQuery] = useState('');
 	const [data, setData] = useState(null);
-	const [isLoading, setIsLoading] = useState(false);
-	const [error, setError] = useState(null);
-
-	//console.log(query);
-	const urlApi = process.env.REACT_APP_YOUTUBE_API_BASE_URL;
-	const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
-
+	const { isLoading, error, fetching} = useHttp();
+    
+	
 	useEffect(() => {
-		const search = async () => {
-				try {        
-						setIsLoading(true);
-						setError(null);
-						setData(null);
-						const url =  `${urlApi}/search?part=snippet&maxResults=26&q=${query}&key=${apiKey}`;
-						//const url = `${urlApi}/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
-						
-						//const url = `${urlApi}/videos?id=XW1aGkzyjQg&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
-						
-						const response = await fetch(url, {
-								method: 'GET',
-								headers: {
-										'Content-Type': 'application/json'
-								}            
-						})
-						console.log(response.status)
-						const data = await response.json();
-						console.info(data)
-
-						data.error ? setError(data.error) : setData(data);                
-
-				} catch (error) {
-					setError({code: 400, errors:[{message: 'Something went wrong', reason: ''}]});
-						console.log(error);
-				}
-				setIsLoading(false);
-				}
-		search();
-},[ urlApi, apiKey, query])
+		const url = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&q=${query}&key=${apiKey}`;
+		//const url = `${urlApi}/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
+		fetching(setData, url);	
+  },[ query, fetching])
 
 console.log(error);
-
-//console.log(data);
 
 	return(
 		<SearchPageStyles>
