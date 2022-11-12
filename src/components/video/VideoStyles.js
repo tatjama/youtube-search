@@ -22,9 +22,10 @@ export const VideoStyles = styled.section`
       margin-bottom: 20px;
       cursor: pointer;
       text-decoration: none;
-      &:hover {
-      color: #7ba507;
-
+      color: #21af6f;
+      font-weight: bold;
+        &:hover {
+        color: #15754a;
       }
     }
 

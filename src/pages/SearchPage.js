@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 //components
-import SearchBar from '../components/searchBar/SearchBar';
-import Video from '../components/video/Video';
-import SearchingLoader from '../components/loaders/SearchingLoader';
+import { SearchBar, Video , SearchingLoader } from '../components';
 //styles
 import { SearchPageStyles } from './SearchPageStyles';
 //hooks
@@ -13,16 +11,13 @@ import { urlApi, apiKey, resultsNumber } from '../utils/constants';
 const SearchPage = () => {
 	const [query, setQuery] = useState('');
 	const [data, setData] = useState(null);
-	const { isLoading, error, fetching} = useHttp();
-    
+	const { isLoading, error, fetching} = useHttp();    
 	
 	useEffect(() => {
 		const url = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&q=${query}&key=${apiKey}`;
 		//const url = `${urlApi}/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
 		fetching(setData, url);	
   },[ query, fetching])
-
-console.log(error);
 
 	return(
 		<SearchPageStyles>
