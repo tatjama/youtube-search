@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+//components
 import SearchBar from '../components/searchBar/SearchBar';
 import Video from '../components/video/Video';
+import SearchingLoader from '../components/loaders/SearchingLoader';
+//styles
 import { SearchPageStyles } from './SearchPageStyles';
+//hooks
 import { useHttp } from '../hooks/useHttp';
+//constants
 import { urlApi, apiKey, resultsNumber } from '../utils/constants';
 
 const SearchPage = () => {
@@ -29,6 +34,7 @@ console.log(error);
 				<p className="error">
 				{error && `Error: ${error?.code} message: ${error?.errors?.map(error => error.message + " " + error.reason)}`}
 				</p>
+        {isLoading && <SearchingLoader/>} 
 				{ data?.items?.map(item => {
 					const id = item.id.videoId ? item.id.videoId : item.id.playlistId ? item.id.playlistId : item.id.channelId
 					return <Video id = {id} video = {item} key = {id}/>
