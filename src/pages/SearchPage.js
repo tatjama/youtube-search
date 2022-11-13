@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 //components
-import { SearchBar, Pagination, SearchingLoader, Video } from '../components';
+import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist } from '../components';
 //hooks
 import { useHttp } from '../hooks/useHttp';
 //utils
@@ -53,13 +53,14 @@ const SearchPage = () => {
         <Pagination data = {data} handlePageClick = {handlePageClick} nextPage = {page}
         prevToken = {data?.prevPageToken && 'prev token'}  nextToken =  {data?.nextPageToken && 'next token'} />
         {isLoading && <SearchingLoader/>} 
-				{ videos?.map(item => {
-					const id = item.id.videoId ? item.id.videoId : item.id.playlistId ? item.id.playlistId : item.id.channelId
-					return <Video id = {id} video = {item} key = {id}/>
-				})}
+				{ videos?.map(item => (item.id.kind === 'youtube#channel') 
+          ? <Channel id = {item.id.channelId} video = {item} key = {item.id.channelId}/>
+          : (item.id.kind === 'youtube#video')
+          ? <Video id = {item.id.videoId} video = {item} key = {item.id.videoId}/>
+          : <Playlist id= {item.id.playlistId} setQuery = {setQuery} video = {item} key = {item.id.playlistId} />          
+				)}
         <Pagination data = {data} handlePageClick = {handlePageClick} nextPage = {page}
-        prevToken = {data?.prevPageToken && 'prev token'}  nextToken =  {data?.nextPageToken && 'next token'} />
-         
+        prevToken = {data?.prevPageToken && 'prev token'}  nextToken =  {data?.nextPageToken && 'next token'} />         
 			</div>              
 		</SearchPageStyles>
 	)

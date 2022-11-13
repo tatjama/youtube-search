@@ -4,8 +4,7 @@ import { createListOfPages, createListOfPagesHuge } from '../../utils/helper';
 import { PaginationStyles } from './PaginationStyles';
 
 const Pagination = ({ data, handlePageClick, nextPage, prevToken = null, nextToken = null}) => {    
-    const pages = Math.ceil(data?.pageInfo?.totalResults / data?.pageInfo?.resultsPerPage)*5;
-    
+    const pages = Math.ceil(data?.pageInfo?.totalResults / data?.pageInfo?.resultsPerPage);
     return(
         !pages || pages < 2
         ? <p className="pagination-placeholder"></p>

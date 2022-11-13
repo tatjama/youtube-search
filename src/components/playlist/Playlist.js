@@ -1,15 +1,13 @@
 //styles
-import { VideoStyles } from './VideoStyles';
+import { PlaylistStyles } from './PlaylistStyles';
 
-const Video = ({ id, video }) => {
-    
-  const videoLink = `https://youtube.com/watch?v=${id}`;
+const Playlist = ({ id, video, setQuery}) => {
   const channelLink = `https://youtube.com/channel/${video.snippet.channelId}`;
   
   return(
-    <VideoStyles id = {id}>                    
+    <PlaylistStyles id = {id}>                    
       <article>
-        <a target="_blank" rel="noopener noreferrer" href={videoLink}>{video.snippet.title}</a>
+        <h4 onClick={() =>  setQuery(id)}>{video.snippet.title}</h4>
         <p><span> Channel: </span> 
           <a target="_blank" rel="noopener noreferrer" href={channelLink}> {video.snippet.channelTitle}</a>
           </p>
@@ -17,10 +15,10 @@ const Video = ({ id, video }) => {
         <p><span> Description: </span>{video.snippet.description}</p>
       </article>
       <div className="imgContainer">
-        <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />                 
-      </div>
-    </VideoStyles>
+        <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} /> 
+      </div>            
+    </PlaylistStyles>
   )
 }
 
-export default Video;
+export default Playlist;
