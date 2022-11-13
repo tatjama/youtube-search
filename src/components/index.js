@@ -1,6 +1,7 @@
 import CommentingLoader from './loaders/CommentingLoader';
-import Video from './video/Video';
+import Pagination from './pagination/Pagination';
 import SearchBar from './searchBar/SearchBar';
 import SearchingLoader from './loaders/SearchingLoader';
+import Video from './video/Video';
 
-export { CommentingLoader, Video, SearchBar, SearchingLoader };
+export { CommentingLoader, Pagination, SearchBar, SearchingLoader, Video };
