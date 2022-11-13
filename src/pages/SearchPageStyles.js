@@ -101,7 +101,7 @@ export const SearchPageStyles = styled.div`
         font-size: 12px;
     }
     
-    .listMovies {
+    .list {
       flex-direction: column;    
     } 
       

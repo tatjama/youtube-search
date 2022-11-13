@@ -19,7 +19,6 @@ export const VideoStyles = styled.section`
     }
 
     a {
-      margin-bottom: 20px;
       cursor: pointer;
       text-decoration: none;
       color: #21af6f;
@@ -60,7 +59,8 @@ export const VideoStyles = styled.section`
           line-height: 14px;
         }     
 
-        h1 {
+        a {
+          line-height: 20px;
           font-size: 14px;
         }
 
@@ -68,5 +68,19 @@ export const VideoStyles = styled.section`
           font-size: 10px;
         }         
  }
+ @media only screen and (max-width: 500px)  {   
+  height: 100%;
+  flex-direction: column;
+  
+  .imgContainer, article {
+    width: 70%;
+  }     
+ }
 
+ @media only screen and (max-width: 365px)  {
+
+  .imgContainer, article {
+    width: 90%;
+  }     
+ }
 `
