@@ -13,7 +13,9 @@ const Channel = ({ id, video }) => {
         <p><span> Description: </span>{video.snippet.description}</p>
       </article>
       <div className="imgContainer">
-          <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />                
+        <a target="_blank" rel="noopener noreferrer" href={channelLink}>
+          <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />
+        </a>                
       </div>            
     </ChannelStyles>
   )

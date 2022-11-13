@@ -21,10 +21,10 @@ export const VideoStyles = styled.section`
     a {
       cursor: pointer;
       text-decoration: none;
-      color: #21af6f;
+      color: #5874c4;
       font-weight: bold;
         &:hover {
-        color: #15754a;
+        color: #3368f5;
       }
     }
 
@@ -43,11 +43,6 @@ export const VideoStyles = styled.section`
         width: 100%;
         height: 100%;
         object-fit: contain;
-      }
-
-      i {
-        font-size: 1000%;
-        color: #40bc84;
       }
     }
 

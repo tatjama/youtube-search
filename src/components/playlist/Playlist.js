@@ -14,7 +14,7 @@ const Playlist = ({ id, video, setQuery}) => {
         <p><span> Year: </span> {video.snippet.publishedAt}</p>
         <p><span> Description: </span>{video.snippet.description}</p>
       </article>
-      <div className="imgContainer">
+      <div className="imgContainer" onClick={() =>  setQuery(id)} >
         <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} /> 
       </div>            
     </PlaylistStyles>

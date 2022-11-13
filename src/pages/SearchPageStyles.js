@@ -14,7 +14,7 @@ export const SearchPageStyles = styled.div`
   nav {    
     padding: 20px 40px;
     align-items: center;
-    color: #21af6f;
+    color: #224abf;
   }
 
   header {

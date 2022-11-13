@@ -11,7 +11,7 @@ export const PaginationStyles = styled.p`
     }
     .page {
       padding: 10px;
-      color: #40bc84;
+      color: #3368f5;
       cursor: pointer;
       :hover {
         color: black;
