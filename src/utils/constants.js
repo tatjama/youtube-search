@@ -1,6 +1,9 @@
 export const urlApi = process.env.REACT_APP_YOUTUBE_API_BASE_URL;
-export const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+export const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY_Q;
 export const resultsNumber = '50';
+export const urlBase = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&key=${apiKey}`;
+	
+export const typesList = ["channel", "playlist", "video"];
 
 export const response = {
     "kind": "youtube#searchListResponse",

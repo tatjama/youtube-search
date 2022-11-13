@@ -1,25 +1,26 @@
 import { useState, useEffect } from 'react';
 //components
-import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist } from '../components';
+import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist, Select } from '../components';
 //hooks
 import { useHttp } from '../hooks/useHttp';
 //utils
-import { urlApi, apiKey, resultsNumber } from '../utils/constants';
+import { urlBase, typesList } from '../utils/constants';
 //styles
 import { SearchPageStyles } from './SearchPageStyles';
 
 const SearchPage = () => {
 	const [query, setQuery] = useState('');
+  const [type, setType] = useState('channel,playlist,video');
 	const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
   const [videos, setVideos] = useState(null);
   const { isLoading, error, fetching } = useHttp();    
 	
-	useEffect(() => {
-		const url = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&q=${query}&key=${apiKey}`;
+  useEffect(() => {
+		const url = `${urlBase}&type=${type}&q=${query}`;
 		//const url = `${urlApi}/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
 		fetching(setData, url); 	
-  },[ query, fetching]);
+  },[ query, fetching, type]);
 
   useEffect(() => {
    const v = data?.items?.slice(0, 10);
@@ -30,7 +31,7 @@ const SearchPage = () => {
     const nextPageToken = data?.nextPageToken; 
     const prevPageToken = data?.prevPageToken;
     const clickedPage = Number.isNaN(Number(e.target.id)) ? e.target.id : Number(e.target.id);
-    const url = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&q=${query}&key=${apiKey}`;
+    const url = `${urlBase}&type=${type}&q=${query}`;
 	      
     (clickedPage === "next 5") ? fetching(setData,`${url}&pageToken=${nextPageToken}`)
       : (clickedPage === "prev 5") ? fetching(setData,`${url}&pageToken=${prevPageToken}`)
@@ -44,7 +45,10 @@ const SearchPage = () => {
 		<SearchPageStyles>
 			<nav><h2>YouTube API</h2></nav>
 			<header>
-				<SearchBar setQuery = {setQuery} />						
+				<SearchBar setQuery = {setQuery} />			
+        <div className="selectContainer">
+          <Select optionsList = {typesList} setOption = {setType} name = "types"/>
+        </div>			
 			</header>
 			<div className="list">
 				<p className="error">               

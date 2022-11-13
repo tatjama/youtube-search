@@ -24,6 +24,7 @@ export const PaginationStyles = styled.p`
     
     @media only screen and (max-width: 450px)  {
         font-size: 12px;
+        margin: 5px;
  }
 `
 

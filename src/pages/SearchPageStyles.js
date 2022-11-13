@@ -7,24 +7,24 @@ export const SearchPageStyles = styled.div`
   
   nav, header {
     width: 100%;
-    padding: 20px 40px;
     display: flex;
     justify-content: space-between;
   }
 
   nav {    
+    padding: 20px 40px;
     align-items: center;
     color: #21af6f;
   }
 
   header {
     width: 700px;
-    margin: 10px auto;
-    flex-wrap: wrap;
+    padding: 0 40px;
+    margin: 0 auto;
   }
 
   .selectContainer {
-    width: 57%;
+    width: 40%;
     display: flex;
     justify-content: space-between;
   }
@@ -43,7 +43,7 @@ export const SearchPageStyles = styled.div`
     flex-wrap: wrap;
     justify-content: center;
     width: 95%;
-    margin: 10px auto;
+    margin: 0 auto 10px auto;
   }  
 
   .background {
@@ -79,13 +79,11 @@ export const SearchPageStyles = styled.div`
 
   @media only screen and (max-width: 768px)  {
     header {
-        width: 100%;
+      width: 100%;
     }
-
     .selectContainer {
-        width: 100%;
+      width: 35%;
     }
-
     .module {
       width: 75%;
     }
@@ -93,12 +91,16 @@ export const SearchPageStyles = styled.div`
 
 
   @media only screen and (max-width: 450px)  {
-    nav, header {
-        padding: 10px 20px;
+    nav {
+      padding: 10px 20px;
+    }
+
+    header {
+      padding: 0 20px;
     }
 
     nav, .error {
-        font-size: 12px;
+      font-size: 12px;
     }
     
     .list {
