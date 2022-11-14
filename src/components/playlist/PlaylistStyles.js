@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const VideoStyles = styled.section`
+export const PlaylistStyles = styled.section`
     width: 630px;
     height: 270px;
     padding: 20px 40px;
@@ -10,7 +10,6 @@ export const VideoStyles = styled.section`
     justify-content: space-between;
     align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
 
     article {
       width: 50%;
@@ -19,7 +18,7 @@ export const VideoStyles = styled.section`
       padding: 20px 0;
     }
 
-    a {
+    a, h4 {
       cursor: pointer;
       text-decoration: none;
       color: #5874c4;
@@ -39,31 +38,12 @@ export const VideoStyles = styled.section`
     .imgContainer {
       width: 45%;
       height: 100%;
+      cursor: pointer;
       
       img {
         width: 100%;
         height: 100%;
         object-fit: contain;
-      }
-    }
-
-    .more {
-      color: #3368f5 ;
-      position: absolute ;
-      bottom: 0;
-      left: 0;
-      padding: 5px;
-      font-size: 8px;
-      line-height: 20px;
-      border-radius:50%;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
-
-      &:hover {
-        background-color: #3368f5 ;
-        color: white;      
       }
     }
 
@@ -75,7 +55,7 @@ export const VideoStyles = styled.section`
           line-height: 14px;
         }     
 
-        a {
+        a, h4 {
           line-height: 20px;
           font-size: 14px;
         }
