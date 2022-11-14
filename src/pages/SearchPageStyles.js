@@ -3,14 +3,8 @@ import styled from 'styled-components'
 export const SearchPageStyles = styled.div`
   width: 100%;
   height: 100vh;
-  overflow: scroll;
+  overflow: scroll;  
   
-  .selectContainer {
-    width: 40%;
-    display: flex;
-    justify-content: space-between;
-  }
-
   .error {
     color: red;
     line-height: 20px;
@@ -19,14 +13,6 @@ export const SearchPageStyles = styled.div`
     font-size: 14px;
     text-align: center;
   }
-
-  .list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 95%;
-    margin: 0 auto 10px auto;
-  }  
 
   .background {
     width: 100%;
@@ -60,10 +46,7 @@ export const SearchPageStyles = styled.div`
   }
 
   @media only screen and (max-width: 768px)  {
-    .selectContainer {
-      width: 35%;
-    }
-
+   
     .module {
       width: 75%;
     }
@@ -75,10 +58,6 @@ export const SearchPageStyles = styled.div`
       font-size: 8px;
       overflow: hidden;
     }
-    
-    .list {
-      flex-direction: column;    
-    } 
       
     .background .close h1 {
       padding: 20px;
