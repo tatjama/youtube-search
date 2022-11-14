@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 //components
-import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist, Select } from '../components';
+import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist, Select, Details } from '../components';
 //hooks
 import { useHttp } from '../hooks/useHttp';
 //utils
-import { urlBase, typesList } from '../utils/constants';
+import { urlBase, typesList, urlApi, apiKey } from '../utils/constants';
 //styles
 import { SearchPageStyles } from './SearchPageStyles';
 
@@ -13,12 +13,13 @@ const SearchPage = () => {
   const [type, setType] = useState('channel,playlist,video');
 	const [data, setData] = useState(null);
   const [page, setPage] = useState(1);
+  const [video, setVideo] = useState(null);
   const [videos, setVideos] = useState(null);
   const { isLoading, error, fetching } = useHttp();    
 	
   useEffect(() => {
 		const url = `${urlBase}&type=${type}&q=${query}`;
-		//const url = `${urlApi}/videos?id=7lCDEYXw3mM&key=${apiKey}&part=snippet,contentDetails,statistics,status`;
+		
 		fetching(setData, url); 	
   },[ query, fetching, type]);
 
@@ -41,6 +42,11 @@ const SearchPage = () => {
     setPage(Number.isNaN(Number(e.target.id)) ? 1 : Number(e.target.id));    
   }
 
+  const handleClickVideo = (e) => {    
+    const urlMovie = `${urlApi}/videos?id=${e.currentTarget.id}&key=${apiKey}&part=snippet,contentDetails,statistics,status`
+    fetching( setVideo, urlMovie);
+  }
+  
   return(
 		<SearchPageStyles>
 			<nav><h2>YouTube API</h2></nav>
@@ -60,12 +66,20 @@ const SearchPage = () => {
 				{ videos?.map(item => (item.id.kind === 'youtube#channel') 
           ? <Channel id = {item.id.channelId} video = {item} key = {item.id.channelId}/>
           : (item.id.kind === 'youtube#video')
-          ? <Video id = {item.id.videoId} video = {item} key = {item.id.videoId}/>
+          ? <Video id = {item.id.videoId} video = {item} key = {item.id.videoId} handleClickVideo = {handleClickVideo}/>
           : <Playlist id= {item.id.playlistId} setQuery = {setQuery} video = {item} key = {item.id.playlistId} />          
 				)}
         <Pagination data = {data} handlePageClick = {handlePageClick} nextPage = {page}
         prevToken = {data?.prevPageToken && 'prev token'}  nextToken =  {data?.nextPageToken && 'next token'} />         
-			</div>              
+			</div>       
+      {video && <div className="background">
+                  <div className="close" onClick ={ () => setVideo(null) }>
+                    <h1>x</h1>
+                  </div>
+                  <div className="module"> 
+                    <Details video = {video?.items[0]} />
+                  </div>
+                </div>}       
 		</SearchPageStyles>
 	)
 }

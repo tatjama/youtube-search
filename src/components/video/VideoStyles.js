@@ -10,6 +10,7 @@ export const VideoStyles = styled.section`
     justify-content: space-between;
     align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 
     article {
       width: 50%;
@@ -43,6 +44,26 @@ export const VideoStyles = styled.section`
         width: 100%;
         height: 100%;
         object-fit: contain;
+      }
+    }
+
+    .more {
+      color: #3368f5 ;
+      position: absolute ;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      font-size: 8px;
+      line-height: 20px;
+      border-radius:50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #3368f5 ;
+        color: white;      
       }
     }
 

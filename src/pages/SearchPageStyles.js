@@ -60,7 +60,7 @@ export const SearchPageStyles = styled.div`
       text-align: right;      
       h1 {
         padding: 40px;
-        color: #21af6f;
+        color: #3368f5;
         cursor: pointer;
         :hover {
           color: red;
