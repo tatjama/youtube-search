@@ -1,12 +1,17 @@
 //constants
-import { urlYT } from '../../utils/constants';
+import { urlYT, urlApi, apiKey } from '../../utils/constants';
 //styles
 import { CardStyles } from './CardStyles';
 
-const Video = ({ id, video, handleClickVideo }) => {
+const Video = ({ id, video, fetching, setVideo }) => {
   const videoLink = `${urlYT}/watch?v=${id}`;
   const channelLink = `${urlYT}/channel/${video.snippet.channelId}`;
-  
+
+  const handleClickVideo = (e) => {    
+    const urlMovie = `${urlApi}/videos?id=${e.currentTarget.id}&key=${apiKey}&part=snippet,contentDetails,statistics,status`
+    fetching( setVideo, urlMovie);
+  }
+
   return(
     <CardStyles >                    
       <article>
