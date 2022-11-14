@@ -62,6 +62,7 @@ export const DetailsStyles = styled.section`
 
     p {
       font-size: 10px;
+      overflow: hidden;
     }         
  }
 
