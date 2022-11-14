@@ -1,12 +1,14 @@
+//constants
+import { urlYT } from '../../utils/constants';
 //styles
-import { VideoStyles } from './VideoStyles';
+import { CardStyles } from './CardStyles';
 
 const Video = ({ id, video, handleClickVideo }) => {
-  const videoLink = `https://youtube.com/watch?v=${id}`;
-  const channelLink = `https://youtube.com/channel/${video.snippet.channelId}`;
+  const videoLink = `${urlYT}/watch?v=${id}`;
+  const channelLink = `${urlYT}/channel/${video.snippet.channelId}`;
   
   return(
-    <VideoStyles >                    
+    <CardStyles >                    
       <article>
         <a target="_blank" rel="noopener noreferrer" href={videoLink}>{video.snippet.title}</a>
         <p><span> Channel: </span> 
@@ -21,7 +23,7 @@ const Video = ({ id, video, handleClickVideo }) => {
         </a>                 
       </div>
       <p id={id} onClick={handleClickVideo} className="more">more...</p>
-    </VideoStyles>
+    </CardStyles>
   )
 }
 

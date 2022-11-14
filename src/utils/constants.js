@@ -1,5 +1,6 @@
 export const urlApi = process.env.REACT_APP_YOUTUBE_API_BASE_URL;
 export const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
+export const urlYT = process.env.REACT_APP_YOUTUBE_API_URL;
 export const resultsNumber = '50';
 export const urlBase = `${urlApi}/search?part=snippet&maxResults=${resultsNumber}&key=${apiKey}`;
 	

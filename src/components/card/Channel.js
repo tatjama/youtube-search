@@ -1,12 +1,14 @@
+//constants
+import { urlYT } from '../../utils/constants';
 //styles
-import { ChannelStyles } from './ChannelStyles';
+import { CardStyles } from './CardStyles';
 
 const Channel = ({ id, video }) => {
     
-  const channelLink = `https://youtube.com/channel/${video.snippet.channelId}`;
+  const channelLink = `${urlYT}/channel/${video.snippet.channelId}`;
   
   return(
-    <ChannelStyles id = {id}>                    
+    <CardStyles id = {id}>                    
       <article>
         <a target="_blank" rel="noopener noreferrer" href={channelLink}>{video.snippet.title}</a>
         <p><span> Year: </span> {video.snippet.publishedAt}</p>
@@ -17,7 +19,7 @@ const Channel = ({ id, video }) => {
           <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} />
         </a>                
       </div>            
-    </ChannelStyles>
+    </CardStyles>
   )
 }
 

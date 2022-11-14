@@ -1,11 +1,13 @@
+//constants
+import { urlYT } from '../../utils/constants';
 //styles
-import { PlaylistStyles } from './PlaylistStyles';
+import { CardStyles } from './CardStyles';
 
 const Playlist = ({ id, video, setQuery}) => {
-  const channelLink = `https://youtube.com/channel/${video.snippet.channelId}`;
+  const channelLink = `${urlYT}/channel/${video.snippet.channelId}`;
   
   return(
-    <PlaylistStyles id = {id}>                    
+    <CardStyles id = {id}>                    
       <article>
         <h4 onClick={() =>  setQuery(id)}>{video.snippet.title}</h4>
         <p><span> Channel: </span> 
@@ -17,7 +19,7 @@ const Playlist = ({ id, video, setQuery}) => {
       <div className="imgContainer" onClick={() =>  setQuery(id)} >
         <img src={video.snippet.thumbnails.high.url} alt={video.snippet.title} /> 
       </div>            
-    </PlaylistStyles>
+    </CardStyles>
   )
 }
 
