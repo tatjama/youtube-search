@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const ChannelStyles = styled.section`
+export const CardStyles = styled.section`
     width: 630px;
     height: 270px;
     padding: 20px 40px;
@@ -10,6 +10,7 @@ export const ChannelStyles = styled.section`
     justify-content: space-between;
     align-items: center;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    position: relative;
 
     article {
       width: 50%;
@@ -18,7 +19,7 @@ export const ChannelStyles = styled.section`
       padding: 20px 0;
     }
 
-    a {
+    a, h4 {
       cursor: pointer;
       text-decoration: none;
       color: #5874c4;
@@ -46,6 +47,26 @@ export const ChannelStyles = styled.section`
       }
     }
 
+    .more {
+      color: #3368f5 ;
+      position: absolute ;
+      bottom: 0;
+      left: 0;
+      padding: 5px;
+      font-size: 8px;
+      line-height: 20px;
+      border-radius:50%;
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #3368f5 ;
+        color: white;      
+      }
+    }
+
     @media only screen and (max-width: 768px)  {    
       width: 100%;
       height: 200px;
@@ -54,7 +75,7 @@ export const ChannelStyles = styled.section`
           line-height: 14px;
         }     
 
-        a {
+        a, h4 {
           line-height: 20px;
           font-size: 14px;
         }

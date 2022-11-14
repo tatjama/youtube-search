@@ -29,7 +29,7 @@
 ## Links
 
 - GitHub - [youtube-api](https://github.com/tatjama/youtube-search)
-- Live - [youtube-api](https://youtube-search-ccn5ojjd7-tatjana.vercel.app/)
+- Live - [youtube-api](https://youtube-search-git-dev-tatjana.vercel.app/)
 
 ### Screenshot
 
