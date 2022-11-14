@@ -17,8 +17,12 @@
 
 ## Overview
     YouTube-api is a web application that will allow the user to search for any video.
-
-    The web application has two pages: authentication and search. The authentication 
+    The results will be displayed when the user writes to the search input or changes type (live search). 
+    In the list of results, the video item has a circle on the bottom left that opens the details of the video when clicked.
+    click:
+    - image or title video - takes you to the page for watching the video, 
+    - channel title - takes you to the channel page, 
+    - playlist title - fetch  the playlist videos
 
 ## Build with 
     1. React.js
@@ -32,6 +36,16 @@
 - Live - [youtube-api](https://youtube-search-git-dev-tatjana.vercel.app/)
 
 ### Screenshot
+
+![Full screen](./public/screenshots/full.PNG)
+![Full screen modal](./public/screenshots/fullModal.PNG)
+![Full screen Error](./public/screenshots/fullError.PNG)
+![Full screen 404](./public/screenshots/noFound.PNG)
+![Tablet](./public/screenshots/tablet.PNG)
+![Mobile](./public/screenshots/mobile.PNG)
+![Mobile Modal](./public/screenshots/mobileModal.PNG)
+![Mobile Error](./public/screenshots/mobileError.PNG)
+
 
 ## Author
 - Website - [Tatjana Markovic](https://my-react-portfolio-tatjana.vercel.app/)
