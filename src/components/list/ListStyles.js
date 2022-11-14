@@ -9,6 +9,7 @@ export const ListStyles = styled.div`
     margin: 0 auto 10px auto;  
   
   @media only screen and (max-width: 450px)  {    
-      flex-direction: column;    
+      flex-direction: column; 
+      width: 85%;   
   }
 `

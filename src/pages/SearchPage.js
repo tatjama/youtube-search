@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 //components
-import { Header, List, SearchingLoader, Details } from '../components';
+import { Header, List, SearchingLoader, Module } from '../components';
 //hooks
 import { useHttp } from '../hooks/useHttp';
 //utils
@@ -39,14 +39,7 @@ const SearchPage = () => {
         fetching={fetching}
         setVideo={setVideo}
       />    
-			{video && <div className="background">
-                  <div className="close" onClick ={ () => setVideo(null) }>
-                    <h1>x</h1>
-                  </div>
-                  <div className="module"> 
-                    <Details video = {video?.items[0]} />
-                  </div>
-                </div>}       
+			{video && <Module video={video} setVideo={setVideo}/>}       
 		</SearchPageStyles>
 	)
 }
