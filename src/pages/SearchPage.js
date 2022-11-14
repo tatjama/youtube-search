@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 //components
-import { Channel, SearchBar, Pagination, SearchingLoader, Video, Playlist, Select, Details } from '../components';
+import { Channel, Header, Pagination, SearchingLoader, Video, Playlist, Details } from '../components';
 //hooks
 import { useHttp } from '../hooks/useHttp';
 //utils
-import { urlBase, typesList, urlApi, apiKey } from '../utils/constants';
+import { urlBase, urlApi, apiKey } from '../utils/constants';
 //styles
 import { SearchPageStyles } from './SearchPageStyles';
 
@@ -46,23 +46,20 @@ const SearchPage = () => {
     const urlMovie = `${urlApi}/videos?id=${e.currentTarget.id}&key=${apiKey}&part=snippet,contentDetails,statistics,status`
     fetching( setVideo, urlMovie);
   }
+
+  const errorText = `Error: ${error?.code} message: ${error?.errors?.map(error => error.message + " " + error.reason)}`; 
   
   return(
 		<SearchPageStyles>
-			<nav><h2>YouTube API</h2></nav>
-			<header>
-				<SearchBar setQuery = {setQuery} />			
-        <div className="selectContainer">
-          <Select optionsList = {typesList} setOption = {setType} name = "types"/>
-        </div>			
-			</header>
+      <Header setQuery={setQuery} setType={setType} />
+      <p className="error">               
+				{error && errorText}
+			</p>
+      {isLoading && <SearchingLoader/>}        
 			<div className="list">
-				<p className="error">               
-				{error && `Error: ${error?.code} message: ${error?.errors?.map(error => error.message + " " + error.reason)}`}
-				</p>
-        <Pagination data = {data} handlePageClick = {handlePageClick} nextPage = {page}
+				<Pagination data = {data} handlePageClick = {handlePageClick} nextPage = {page}
         prevToken = {data?.prevPageToken && 'prev token'}  nextToken =  {data?.nextPageToken && 'next token'} />
-        {isLoading && <SearchingLoader/>} 
+         
 				{ videos?.map(item => (item.id.kind === 'youtube#channel') 
           ? <Channel id = {item.id.channelId} video = {item} key = {item.id.channelId}/>
           : (item.id.kind === 'youtube#video')

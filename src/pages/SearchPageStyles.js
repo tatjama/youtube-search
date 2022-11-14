@@ -5,24 +5,6 @@ export const SearchPageStyles = styled.div`
   height: 100vh;
   overflow: scroll;
   
-  nav, header {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-  }
-
-  nav {    
-    padding: 20px 40px;
-    align-items: center;
-    color: #224abf;
-  }
-
-  header {
-    width: 700px;
-    padding: 0 40px;
-    margin: 0 auto;
-  }
-
   .selectContainer {
     width: 40%;
     display: flex;
@@ -78,12 +60,10 @@ export const SearchPageStyles = styled.div`
   }
 
   @media only screen and (max-width: 768px)  {
-    header {
-      width: 100%;
-    }
     .selectContainer {
       width: 35%;
     }
+
     .module {
       width: 75%;
     }
@@ -91,16 +71,9 @@ export const SearchPageStyles = styled.div`
 
 
   @media only screen and (max-width: 450px)  {
-    nav {
-      padding: 10px 20px;
-    }
-
-    header {
-      padding: 0 20px;
-    }
-
-    nav, .error {
-      font-size: 12px;
+    .error {
+      font-size: 8px;
+      overflow: hidden;
     }
     
     .list {
