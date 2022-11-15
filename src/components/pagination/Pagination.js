@@ -5,8 +5,7 @@ import { urlBase } from '../../utils/constants';
 //styles
 import { PaginationStyles } from './PaginationStyles';
 
-const Pagination = ({ data, fetching, setVideos, setData, query, type }) => {  
-  const [page, setPage] = useState(1);
+const Pagination = ({ data, fetching, setVideos, setData, query, type, page, setPage }) => {  
 
   const pages = Math.ceil(data?.pageInfo?.totalResults / data?.pageInfo?.resultsPerPage);
   const prevToken = data?.prevPageToken && 'prev token';

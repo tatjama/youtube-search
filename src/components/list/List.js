@@ -6,6 +6,7 @@ import { ListStyles } from './ListStyles';
 
 const List = ({ data, setQuery, query, setData, type, fetching, setVideo }) => {
   const [videos, setVideos] = useState(null);
+  const [page, setPage] = useState(1);
   
   useEffect(() => {
     const v = data?.items?.slice(0, 10);
@@ -21,6 +22,8 @@ const List = ({ data, setQuery, query, setData, type, fetching, setVideo }) => {
         setVideos={setVideos} 
         query={query} 
         type={type}
+        page={page}
+        setPage={setPage}
       />        
       { videos?.map(item => (item.id.kind === 'youtube#channel') 
         ? <Channel id={item.id.channelId} video={item} key={item.id.channelId}/>
@@ -35,6 +38,8 @@ const List = ({ data, setQuery, query, setData, type, fetching, setVideo }) => {
         setVideos={setVideos} 
         query={query} 
         type={type}
+        page={page}
+        setPage={setPage}
       />
       </ListStyles>      
   )
